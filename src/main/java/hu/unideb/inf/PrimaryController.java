@@ -8,12 +8,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Reader;
-import java.io.Writer;
+import java.io.*;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -65,6 +63,7 @@ public class PrimaryController implements Initializable {
     private Label price6;
     private  List<Label> prices= new ArrayList<>();
 
+
     @FXML
     private ImageView productImg1;
     @FXML
@@ -77,7 +76,7 @@ public class PrimaryController implements Initializable {
     private ImageView productImg5;
     @FXML
     private ImageView productImg6;
-    private ImageView[] imageViews={productImg1,productImg2,productImg3,productImg4,productImg5,productImg6};
+
     @FXML
     private Button button2;
     @FXML
@@ -94,6 +93,7 @@ public class PrimaryController implements Initializable {
     private Button nextButton;
     @FXML
     private Button backButton;
+    private  List<ImageView> imageViews= new ArrayList<>();
     private  List<Button> buttons= new ArrayList<>();
     private List<Product> products=new ArrayList<>();
     private int from=0;
@@ -111,15 +111,29 @@ public class PrimaryController implements Initializable {
     public void writeToJson() {
         try {
             List<Product> products = Arrays.asList(
-                  new Product(100,"alma","Szepaghdfghlma","getClass().getResource(\"img/img1.jpg\")"),
-                    new Product(101,"alma","Szepdghdalma","img"),
-                    new Product(120,"alma","Szepdfghhdgfflma","img"),
-                    new Product(150,"alma","Szepaldfgdgma","img"),
-                    new Product(180,"alma","Szephdfghdgfdalma","img"),
-                    new Product(10,"alma","Szepgdalma","img"),
-                    new Product(1470,"alma","Szepgdaljhghjkma","img")
+                  new Product(100,"alma","Szepaghdfghlma","img/img1.jpg"),
+                    new Product(101,"alma","Szepdghdalma","img/motor2.jpg"),
+                    new Product(120,"alma","Szepdfghhdgfflma","img/motor.png"),
+                    new Product(150,"alma","Szepaldfgdgma","img/motor2.jpg"),
+                    new Product(180,"alma","Szephdfghdgfdalma","img/motor.png"),
+                    new Product(10,"alma","Szepgdalma","img/motor3.jpg"),
+                    new Product(1470,"alma","Szepgdaljhghjkma","img/motor2.jpg"),
+                    new Product(12054,"alma","Szepdfghhdgfflma","img/motor2.jpg"),
+                    new Product(14750,"alma","Szepaldfgdgma","img/motor2.jpg"),
+                    new Product(1215,"alma","Szephdfghdgfdalma","img/motor2.jpg"),
+                    new Product(184,"alma","Szepgdalma","img/motor3.jpg"),
+                    new Product(101324,"alma","Szepdghdalma","img/motor2.jpg"),
+                    new Product(125620,"alma","Szepdfghhdgfflma","img/motor3.jpg"),
+                    new Product(1574230,"alma","Szepaldfgdgma","img/motor.png"),
+                    new Product(185420,"alma","Szephdfghdgfdalma","img/motor2.jpg"),
+                    new Product(178950,"alma","Szepgdalma","img/motor2.jpg"),
+                    new Product(146570,"alma","Szepgdaljhghjkma","img/motor3.jpg"),
+                    new Product(120654,"alma","Szepdfghhdgfflma","img/motor.png"),
+                    new Product(1475430,"alma","Szepaldfgdgma","img/motor2.jpg"),
+                    new Product(123215,"alma","Szephdfghdgfdalma","img/motor.png"),
+                    new Product(1824564,"alma","Szepgdalma","img/motor2.jpg")
             );
-            Writer writer = new FileWriter("Products.json");
+            Writer writer = new FileWriter(new File("src/main/resources/hu/unideb/inf/Jsons/Products.json"));
             new Gson().toJson(products, writer);
             writer.close();
         } catch (Exception ex) {
@@ -131,8 +145,6 @@ public class PrimaryController implements Initializable {
         App.setRoot("secondary");
     }
     public void addToCart(ActionEvent actionEvent) {
-       // final Node source = (Node) actionEvent.getSource();
-       // String id = source.getId();
         for (int i=0;i<buttons.size();i++){
             if(actionEvent.getSource()==buttons.get(i)){
                 System.out.println(prices.get(i).getText());
@@ -157,9 +169,17 @@ public class PrimaryController implements Initializable {
         for (int i=0;i<6;i++){
             des.get(i).setText(products.get(i+from).getDescription());
         }
+        for (int i=0;i<6;i++){
+            Image image=new Image(getClass().getResourceAsStream(products.get(i+from).getImgSrc()));
+            imageViews.get(i).setImage(image);
+        }
     }
     public void nextPage(ActionEvent actionEvent){
-        from=from+6;
+        if (products.size()-6<from){
+            from=products.size()-6;
+        }else {
+            from=from+6;
+        }
         setTextOnView(from);
     }
     public void backPage(ActionEvent actionEvent){
@@ -173,7 +193,6 @@ public class PrimaryController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
        writeToJson();
-        System.out.println(getClass().getResource("img/img1.jpg"));
         prices.add(price1);
         prices.add(price2);
         prices.add(price3);
@@ -198,28 +217,18 @@ public class PrimaryController implements Initializable {
         buttons.add(button4);
         buttons.add(button5);
         buttons.add(button6);
+        imageViews.add(productImg1);
+        imageViews.add(productImg2);
+        imageViews.add(productImg3);
+        imageViews.add(productImg4);
+        imageViews.add(productImg5);
+        imageViews.add(productImg6);
         try {
             Gson gson = new Gson();
-            Reader reader = Files.newBufferedReader(Paths.get("Products.json"));
+            File file =new File("src/main/resources/hu/unideb/inf/Jsons/Products.json");
+            Reader reader = Files.newBufferedReader(Paths.get(file.getPath()));
             products = new Gson().fromJson(reader, new TypeToken<List<Product>>() {}.getType());
-
-            for (int i=0;i<6;i++){
-
-            }
-
             setTextOnView(from);
-            //App.class.getResource("/img1.jpg").getPath()
-            //String path=(App.class.getResource("/img1.jpg").getPath());
-            //path = path.replaceFirst("/", "");
-            // File pathToFile = new File(products.get(0).getImgSrc());
-            //File pathToFile = new File(String.valueOf(Paths.get("img.jpg")));
-            //URL url1=getClass().getResource("img/img1.jpg");
-           // URI uri=url1.toURI();
-           // Image image;
-            //4
-            //URL urrl=App.class.getResource("/img1.jpg");
-           // System.out.println(Files.exists(Paths.get(urrl)));
-           // System.out.println("EZ MI?" + App.class.getResource("/img1.jpg"));
             reader.close();
         } catch (Exception ex) {
             ex.printStackTrace();
