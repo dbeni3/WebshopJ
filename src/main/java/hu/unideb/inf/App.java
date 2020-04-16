@@ -5,9 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
-import java.awt.*;
 import java.io.IOException;
 
 
@@ -19,11 +17,11 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("primary"));
         stage.setScene(scene);
+
        //stage.initStyle(StageStyle.UNDECORATED);
        //Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         //double width = screenSize.getWidth() / 2.5;
       // double height = screenSize.getHeight() / 2;
-
        stage.setWidth(1280);
        stage.setHeight(720);
         stage.show();
@@ -40,10 +38,6 @@ public class App extends Application {
 
     public static void main(String[] args) {
         launch();
-
-
-
-
     }
 
 }
