@@ -3,6 +3,7 @@ package hu.unideb.inf;
 //import java.awt.*;
 
 public class Product {
+    public int Id;
     public int price;
     public String productName;
     public String description;
@@ -11,16 +12,19 @@ public class Product {
 
     public Product(){
     }
-    public Product(int price1,String productName1,String description1,String src){
+    public Product(int price1,String productName1,String description1,String src,int id){
         setPrice(price1);
         setDescription(description1);
         setImgSrc(src);
         setProductName(productName1);
+        this.Id=id;
     }
+    public int getId(){return Id;}
 
     public int getPrice() {
         return price;
     }
+
     public void setPrice(int price) {
         this.price = price;
     }

@@ -15,7 +15,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary"));
+        scene = new Scene(loadFXML("shop"));
         stage.setScene(scene);
 
        //stage.initStyle(StageStyle.UNDECORATED);
@@ -24,7 +24,7 @@ public class App extends Application {
       // double height = screenSize.getHeight() / 2;
        stage.setWidth(1280);
        stage.setHeight(720);
-        stage.show();
+       stage.show();
     }
 
     static void setRoot(String fxml) throws IOException {
