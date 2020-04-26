@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 
 import java.io.IOException;
 
-public class SecondaryController {
+public class OrderController {
 
     @FXML
     private void switchToPrimary() throws IOException {

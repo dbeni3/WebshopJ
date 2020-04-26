@@ -1,19 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-
 <!--<Button fx:id="secondaryButton" onAction="#switchToPrimary" text="Switch to Primary View" BorderPane.alignment="CENTER"/>-->
 
-<BorderPane prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.SecondaryController">
-    <top>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
 
+<BorderPane prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.OrderController">
+    <top>
+        <AnchorPane maxWidth="1280.0" prefHeight="40.0" prefWidth="1280.0" style="-fx-background-color: #7FB3D5;" BorderPane.alignment="CENTER">
+            <children>
+                <ImageView fitHeight="34.0" fitWidth="43.0" layoutX="8.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" />
+                <Label alignment="CENTER" contentDisplay="CENTER" layoutX="452.0" layoutY="3.0" prefHeight="35.0" prefWidth="384.0" text="webáruház" textFill="#0b00e5" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="452.0" AnchorPane.rightAnchor="452.0" AnchorPane.topAnchor="3.0">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
     </top>
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="465.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="toShop" layoutX="74.0" layoutY="88.0" mnemonicParsing="false" onAction="#switchToPrimary" text="Button" />
+            <Button fx:id="toShop" layoutX="487.0" layoutY="540.0" mnemonicParsing="false" onAction="#switchToPrimary" text="Rendelés leadása" />
+            <TextField layoutX="463.0" layoutY="133.0" prefWidth="200.0" promptText="Name" />
+            <TextField layoutX="463.0" layoutY="290.0" prefHeight="26.0" prefWidth="200.0" promptText="Irányítószám" />
+            <TextField layoutX="463.0" layoutY="340.0" prefHeight="26.0" prefWidth="200.0" promptText="Lakcím" />
+            <TextField layoutX="463.0" layoutY="183.0" prefWidth="200.0" promptText="Telefonszám" />
+            <TextField layoutX="463.0" layoutY="240.0" prefWidth="200.0" promptText="Email cím" />
+            <TextField layoutX="92.0" layoutY="472.0" promptText="Kuponkód" />
+            <Label fx:id="couponErr" layoutX="115.0" layoutY="522.0" text="Hibás kuponkód" textFill="#e80404" visible="false" />
+            <Label layoutX="449.0" layoutY="66.0" text="Rendelés leadása">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="adressErr" layoutX="257.0" layoutY="358.0" text="Lakcím nem maradhat üresen!" textFill="#e40000" visible="false" />
+            <Label fx:id="postalcodeErr" layoutX="223.0" layoutY="308.0" text="Irányítószám nem maradhat üresen!" textFill="#e40000" visible="false" />
+            <Label fx:id="emailErr" layoutX="241.0" layoutY="249.0" text="Email cím nem maradhat üresen!" textFill="#e40000" visible="false" />
+            <Label fx:id="phoneErr" layoutX="222.0" layoutY="192.0" text="Telefonszám nem maradhat üresen!" textFill="#e40000" visible="false" />
+            <Label fx:id="nameErr" layoutX="277.0" layoutY="137.0" text="Név nem maradhat üresen!" textFill="#e40000" visible="false" />
          </children>
       </AnchorPane>
    </center>

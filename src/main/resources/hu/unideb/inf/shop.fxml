@@ -21,13 +21,13 @@
                      <children>
                         <HBox alignment="CENTER_RIGHT" prefHeight="45.0" prefWidth="1271.0">
                            <children>
-                              <Button fx:id="backButton" mnemonicParsing="false" onAction="#backPage" text="Previous">
+                              <Button fx:id="backButtonOnPage" mnemonicParsing="false" onAction="#backPage" text="Previous">
                                  <padding>
                                     <Insets left="10.0" right="10.0" />
                                  </padding>
                               </Button>
                               <Label fx:id="pageLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="110.0" text="" />
-                              <Button fx:id="nextButton" mnemonicParsing="false" onAction="#nextPage" prefHeight="17.0" prefWidth="56.0" text="Next">
+                              <Button fx:id="nextButtonOnPage" mnemonicParsing="false" onAction="#nextPage" prefHeight="17.0" prefWidth="56.0" text="Next">
                                  <padding>
                                     <Insets left="10.0" right="10.0" />
                                  </padding>
@@ -48,7 +48,7 @@
                                     <Label fx:id="productName1" alignment="CENTER" contentDisplay="BOTTOM" layoutX="11.0" layoutY="175.0" prefHeight="21.0" prefWidth="198.0" text="name" AnchorPane.bottomAnchor="78.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="174.0" />
                                     <Label fx:id="price1" alignment="CENTER" contentDisplay="BOTTOM" layoutX="8.0" layoutY="195.0" prefHeight="25.0" prefWidth="198.0" text="price" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="195.0" />
                                     <Label fx:id="productDes1" alignment="CENTER" contentDisplay="BOTTOM" layoutX="4.0" layoutY="223.0" prefHeight="50.0" prefWidth="206.0" text="description" wrapText="true" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="222.0" />
-                                    <Button fx:id="button1" layoutX="83.0" layoutY="152.0" mnemonicParsing="false" onAction="#addToCart" prefHeight="17.0" prefWidth="52.0" text="Button" />
+                                    <Button fx:id="button1" layoutX="76.0" layoutY="152.0" mnemonicParsing="false" onAction="#addToCart" prefHeight="17.0" prefWidth="60.0" text="Kosárba" />
                                  </children>
                                  <opaqueInsets>
                                     <Insets />
@@ -60,7 +60,7 @@
                                     <Label fx:id="productName2" alignment="CENTER" contentDisplay="BOTTOM" layoutX="11.0" layoutY="175.0" prefHeight="21.0" prefWidth="198.0" text="name" AnchorPane.bottomAnchor="78.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="174.0" />
                                     <Label fx:id="price2" alignment="CENTER" contentDisplay="BOTTOM" layoutX="8.0" layoutY="195.0" prefHeight="25.0" prefWidth="198.0" text="price" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="195.0" />
                                     <Label fx:id="productDes2" alignment="CENTER" contentDisplay="BOTTOM" layoutX="4.0" layoutY="223.0" prefHeight="50.0" prefWidth="206.0" text="description" wrapText="true" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="222.0" />
-                                    <Button fx:id="button2" layoutX="83.0" layoutY="152.0" mnemonicParsing="false" onAction="#addToCart" prefHeight="17.0" prefWidth="52.0" text="Button" />
+                                    <Button fx:id="button2" layoutX="76.0" layoutY="152.0" mnemonicParsing="false" onAction="#addToCart" prefHeight="17.0" prefWidth="60.0" text="Kosárba" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane fx:id="productPane3" prefHeight="273.0" prefWidth="212.0" style="-fx-border-color: black;">
@@ -69,7 +69,7 @@
                                     <Label fx:id="productName3" alignment="CENTER" contentDisplay="BOTTOM" layoutX="11.0" layoutY="175.0" prefHeight="21.0" prefWidth="198.0" text="name" AnchorPane.bottomAnchor="78.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="174.0" />
                                     <Label fx:id="price3" alignment="CENTER" contentDisplay="BOTTOM" layoutX="8.0" layoutY="195.0" prefHeight="25.0" prefWidth="198.0" text="price" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="195.0" />
                                     <Label fx:id="productDes3" alignment="CENTER" contentDisplay="BOTTOM" layoutX="4.0" layoutY="223.0" prefHeight="50.0" prefWidth="206.0" text="description" wrapText="true" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="222.0" />
-                                    <Button fx:id="button3" layoutX="83.0" layoutY="152.0" mnemonicParsing="false" onAction="#addToCart" prefHeight="17.0" prefWidth="52.0" text="Button" />
+                                    <Button fx:id="button3" layoutX="76.0" layoutY="152.0" mnemonicParsing="false" onAction="#addToCart" prefHeight="25.0" prefWidth="60.0" text="Kosárba" textOverrun="CLIP" />
                                  </children>
                               </AnchorPane>
                            </children>
@@ -85,7 +85,7 @@
                                     <Label fx:id="productName4" alignment="CENTER" contentDisplay="BOTTOM" layoutX="11.0" layoutY="175.0" prefHeight="21.0" prefWidth="198.0" text="name" AnchorPane.bottomAnchor="78.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="174.0" />
                                     <Label fx:id="price4" alignment="CENTER" contentDisplay="BOTTOM" layoutX="8.0" layoutY="195.0" prefHeight="25.0" prefWidth="198.0" text="price" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="195.0" />
                                     <Label fx:id="productDes4" alignment="CENTER" contentDisplay="BOTTOM" layoutX="4.0" layoutY="223.0" prefHeight="50.0" prefWidth="206.0" text="description" wrapText="true" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="222.0" />
-                                    <Button fx:id="button4" layoutX="83.0" layoutY="152.0" mnemonicParsing="false" onAction="#addToCart" prefHeight="17.0" prefWidth="52.0" text="Button" />
+                                    <Button fx:id="button4" layoutX="76.0" layoutY="152.0" mnemonicParsing="false" onAction="#addToCart" prefHeight="17.0" prefWidth="60.0" text="Kosárba" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane fx:id="productPane5" prefHeight="273.0" prefWidth="212.0" style="-fx-border-color: black;">
@@ -94,7 +94,7 @@
                                     <Label fx:id="productName5" alignment="CENTER" contentDisplay="BOTTOM" layoutX="11.0" layoutY="175.0" prefHeight="21.0" prefWidth="198.0" text="name" AnchorPane.bottomAnchor="78.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="174.0" />
                                     <Label fx:id="price5" alignment="CENTER" contentDisplay="BOTTOM" layoutX="8.0" layoutY="195.0" prefHeight="25.0" prefWidth="198.0" text="price" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="195.0" />
                                     <Label fx:id="productDes5" alignment="CENTER" contentDisplay="BOTTOM" layoutX="4.0" layoutY="223.0" prefHeight="50.0" prefWidth="206.0" text="description" wrapText="true" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="222.0" />
-                                    <Button fx:id="button5" layoutX="83.0" layoutY="152.0" mnemonicParsing="false" onAction="#addToCart" prefHeight="17.0" prefWidth="52.0" text="Button" />
+                                    <Button fx:id="button5" layoutX="79.0" layoutY="152.0" mnemonicParsing="false" onAction="#addToCart" prefHeight="17.0" prefWidth="60.0" text="Kosárba" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane fx:id="productPane6" prefHeight="273.0" prefWidth="212.0" style="-fx-border-color: black;">
@@ -103,7 +103,7 @@
                                     <Label fx:id="productName6" alignment="CENTER" contentDisplay="BOTTOM" layoutX="11.0" layoutY="175.0" prefHeight="21.0" prefWidth="198.0" text="name" AnchorPane.bottomAnchor="78.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="174.0" />
                                     <Label fx:id="price6" alignment="CENTER" contentDisplay="BOTTOM" layoutX="8.0" layoutY="195.0" prefHeight="25.0" prefWidth="198.0" text="price" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="195.0" />
                                     <Label fx:id="productDes6" alignment="CENTER" contentDisplay="BOTTOM" layoutX="4.0" layoutY="223.0" prefHeight="50.0" prefWidth="206.0" text="description" wrapText="true" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="222.0" />
-                                    <Button fx:id="button6" layoutX="83.0" layoutY="152.0" mnemonicParsing="false" onAction="#addToCart" prefHeight="17.0" prefWidth="52.0" text="Button" />
+                                    <Button fx:id="button6" layoutX="76.0" layoutY="152.0" mnemonicParsing="false" onAction="#addToCart" prefHeight="17.0" prefWidth="60.0" text="Kosárba" />
                                  </children>
                               </AnchorPane>
                            </children>
@@ -141,27 +141,30 @@
                      <children>
                         <Label fx:id="basketProdName1" layoutX="27.0" layoutY="30.0" prefHeight="25.0" prefWidth="109.0" text="product name" />
                         <Label fx:id="basketProdPrice1" layoutX="238.0" layoutY="39.0" prefHeight="17.0" prefWidth="61.0" text="price" />
-                        <Button layoutX="356.0" layoutY="55.0" mnemonicParsing="false" text="Törlés" />
+                        <Button fx:id="delete1" layoutX="356.0" layoutY="55.0" mnemonicParsing="false" onAction="#deleteButton" text="Törlés" />
+                        <Label layoutX="193.0" layoutY="39.0" text="Ár:" />
                      </children>
                   </AnchorPane>
                   <AnchorPane prefHeight="94.0" prefWidth="441.0" style="-fx-border-color: black;">
                      <children>
                         <Label fx:id="basketProdName2" layoutX="27.0" layoutY="30.0" prefHeight="25.0" prefWidth="109.0" text="product name" />
                         <Label fx:id="basketProdPrice2" layoutX="238.0" layoutY="39.0" prefHeight="17.0" prefWidth="61.0" text="price" />
-                        <Button layoutX="356.0" layoutY="55.0" mnemonicParsing="false" text="Törlés" />
+                        <Button fx:id="delete2" layoutX="356.0" layoutY="55.0" mnemonicParsing="false" onAction="#deleteButton" text="Törlés" />
+                        <Label layoutX="197.0" layoutY="39.0" text="Ár:" />
                      </children>
                   </AnchorPane>
                   <AnchorPane prefHeight="86.0" prefWidth="441.0" style="-fx-border-color: black;">
                      <children>
                         <Label fx:id="basketProdName3" layoutX="27.0" layoutY="30.0" prefHeight="25.0" prefWidth="109.0" text="product name" />
                         <Label fx:id="basketProdPrice3" layoutX="238.0" layoutY="39.0" prefHeight="17.0" prefWidth="61.0" text="price" />
-                        <Button layoutX="357.0" layoutY="45.0" mnemonicParsing="false" text="Törlés" />
+                        <Button fx:id="delete3" layoutX="357.0" layoutY="45.0" mnemonicParsing="false" onAction="#deleteButton" text="Törlés" />
+                        <Label layoutX="193.0" layoutY="37.0" text="Ár:" />
                      </children>
                   </AnchorPane>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <Button layoutX="285.0" layoutY="9.0" mnemonicParsing="false" text="Back" />
-                        <Button layoutX="358.0" layoutY="9.0" mnemonicParsing="false" text="Next" />
+                        <Button fx:id="backButtonOnBasket" onAction="#backOnBasketButton" layoutX="285.0" layoutY="9.0" mnemonicParsing="false" text="Back" />
+                        <Button fx:id="nextButtonOnBasket" onAction="#nextOnBasketButton" layoutX="358.0" layoutY="9.0" mnemonicParsing="false" text="Next" />
                      </children>
                   </AnchorPane>
                   <AnchorPane prefHeight="59.0" prefWidth="441.0">
