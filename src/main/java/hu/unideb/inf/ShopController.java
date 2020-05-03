@@ -1,7 +1,6 @@
 package hu.unideb.inf;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+import hu.unideb.inf.db.Db;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,12 +12,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 
-import java.io.*;
+import java.io.IOException;
 import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -128,31 +124,9 @@ public class ShopController implements Initializable {
     private List<Product> track=new ArrayList<>();
     private int fromPage =0;
     private int fromBasket=0;
-    private void readFromJson()  {
-        try {
-            Gson gson = new Gson();
-            Reader reader = Files.newBufferedReader(Paths.get("Products.json"));
-            List<Product> products = new Gson().fromJson(reader, new TypeToken<List<Product>>() {}.getType());
-            products.forEach(System.out::println);
-            reader.close();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-    private void writeToJson() {
-        try {
-            List<Product> products = Arrays.asList(
-
-            );
-            Writer writer = new FileWriter(new File("src/main/resources/hu/unideb/inf/Jsons/Products.json"));
-            new Gson().toJson(products, writer);
-            writer.close();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
     @FXML
     private void switchToOrder() throws IOException {
+
         App.setRoot("order");
     }
     @FXML
@@ -237,7 +211,7 @@ public class ShopController implements Initializable {
         }
     }
     @FXML
-    private void nextPage(ActionEvent actionEvent){
+    private void nextPage(){
         if (products.size()-6< fromPage){
             fromPage =products.size()-6;
         }else {
@@ -247,7 +221,7 @@ public class ShopController implements Initializable {
         setTextOnShop(fromPage);
     }
     @FXML
-    private void backPage(ActionEvent actionEvent){
+    private void backPage(){
         if (fromPage -6<0){
             fromPage =0;
         }else {
@@ -297,7 +271,6 @@ public class ShopController implements Initializable {
         setTextOnBasket(fromBasket);
         setButtonEnable(nextButtonOnBasket);
     }
-
     @FXML
     private void nextOnBasketButton(ActionEvent actionEvent){
         fromBasket+=3;
@@ -306,7 +279,6 @@ public class ShopController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-       JsonWriter.fillJson();
         basketPane.setVisible(false);
         deleteButtons.forEach(this::setButtonDisable);
         basketName.add(basketProdName1);
@@ -348,17 +320,11 @@ public class ShopController implements Initializable {
         deleteButtons.add(delete1);
         deleteButtons.add(delete2);
         deleteButtons.add(delete3);
-        try {
-            Gson gson = new Gson();
-            Reader reader = Files.newBufferedReader(Paths.get("src/main/resources/hu/unideb/inf/Jsons/Products.json"));
-            products = new Gson().fromJson(reader, new TypeToken<List<Product>>() {}.getType());
-            for (int i=0;i<6 && i<products.size();i++){
-                track.add(products.get(i));
-            }
-            setTextOnShop(fromPage);
-            reader.close();
-        } catch (Exception ex) {
-            ex.printStackTrace();
+        Db db =new Db();
+        products=db.getProducts();
+        for (int i=0;i<6 && i<products.size();i++){
+            track.add(products.get(i));
         }
+        setTextOnShop(fromPage);
     }
 }
