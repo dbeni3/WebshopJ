@@ -2,6 +2,7 @@ package hu.unideb.inf.db;
 
 import hu.unideb.inf.Product;
 
+import java.awt.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -60,7 +61,7 @@ public class Db {
             try {
                 ResultSet rsl =metadata.getTables(null,"APP", "Orders",null);
                 if (!rsl.next()){
-                    cStatement.execute("CREATE TABLE Orders( ID INT PRIMARY KEY AUTO_INCREMENT, productID INT,PurchaserID INT)");
+                    cStatement.execute("CREATE TABLE Orders( ID INT PRIMARY KEY AUTO_INCREMENT, ProductID INT,PurchaserID INT)");
                 }
 
             } catch (SQLException throwables) {
@@ -81,13 +82,24 @@ public class Db {
             throwables.printStackTrace();
         }
     }
-    public void addPurchaser(Product product){
-        String sql = "INSERT INTO Products (productName, price, description,imgSrc) VALUES (?,?,?,?)";
-        try (PreparedStatement ps = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS)) {
-            ps.setString(1, product.getProductName());
-            ps.setInt(2, product.getPrice());
-            ps.setString(3, product.getDescription());
-            ps.setString(4, product.getImgSrc());
+    public void addPurchaser(String purchaserName,String purchaserPhone,String purchaserEmail,String purchaserPostalCode,String purchaserAddress) {
+        String sql = "INSERT INTO Purchaser(purchaserName,purchaserPhone,purchaserEmail,purchaserPostalCode,purchaserAddress) VALUES (?,?,?,?,?)";
+        try (PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            ps.setString(1, purchaserName);
+            ps.setString(2, purchaserPhone);
+            ps.setString(3, purchaserEmail);
+            ps.setString(4, purchaserPostalCode);
+            ps.setString(5, purchaserAddress);
+            ps.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+    public void addOrder(int purchaserID,int productID){
+        String sql="INSERT INTO Orders(ProductID,PurchaserID) VALUES (?,?)";
+        try(PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            ps.setInt(1,productID);
+            ps.setInt(2,purchaserID);
             ps.executeUpdate();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -106,6 +118,19 @@ public class Db {
             throwables.printStackTrace();
         }
         return products;
+    }
+    public int getPurchaser(){
+        String sql="SELECT * FROM Purchaser;";
+        int id=0;
+        try {
+            ResultSet rs =cStatement.executeQuery(sql);
+            while (rs.next()){
+               id= rs.getInt("ID");
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return id;
     }
 
 

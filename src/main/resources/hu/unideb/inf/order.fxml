@@ -23,17 +23,17 @@
             </children>
         </AnchorPane>
     </top>
-   <center>
-      <AnchorPane prefHeight="200.0" prefWidth="465.0" BorderPane.alignment="CENTER">
+   <bottom>
+      <AnchorPane prefHeight="688.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="toShop" layoutX="487.0" layoutY="540.0" mnemonicParsing="false" onAction="#switchToPrimary" text="Rendelés leadása" />
-            <TextField layoutX="463.0" layoutY="133.0" prefWidth="200.0" promptText="Name" />
-            <TextField layoutX="463.0" layoutY="290.0" prefHeight="26.0" prefWidth="200.0" promptText="Irányítószám" />
-            <TextField layoutX="463.0" layoutY="340.0" prefHeight="26.0" prefWidth="200.0" promptText="Lakcím" />
-            <TextField layoutX="463.0" layoutY="183.0" prefWidth="200.0" promptText="Telefonszám" />
-            <TextField layoutX="463.0" layoutY="240.0" prefWidth="200.0" promptText="Email cím" />
-            <TextField layoutX="92.0" layoutY="472.0" promptText="Kuponkód" />
-            <Label fx:id="couponErr" layoutX="115.0" layoutY="522.0" text="Hibás kuponkód" textFill="#e80404" visible="false" />
+            <Button fx:id="toShop" layoutX="487.0" layoutY="540.0" mnemonicParsing="false" onAction="#makeOrder" text="Rendelés leadása" />
+            <TextField fx:id="purchaserName" layoutX="463.0" layoutY="133.0" prefWidth="200.0" promptText="Name" />
+            <TextField fx:id="purchaserPostalCode" layoutX="463.0" layoutY="290.0" prefHeight="26.0" prefWidth="200.0" promptText="Irányítószám" />
+            <TextField fx:id="purchaserAddress" layoutX="463.0" layoutY="340.0" prefHeight="26.0" prefWidth="200.0" promptText="Lakcím" />
+            <TextField fx:id="purchaserPhone" layoutX="463.0" layoutY="183.0" prefWidth="200.0" promptText="Telefonszám" />
+            <TextField fx:id="purchaserEmail" layoutX="463.0" layoutY="240.0" prefWidth="200.0" promptText="Email cím" />
+            <TextField fx:id="couponText" layoutX="92.0" layoutY="472.0" promptText="Kuponkód" />
+            <Label fx:id="couponMess" layoutX="115.0" layoutY="522.0" text="Hibás kuponkód" textFill="#e80404" visible="false" />
             <Label layoutX="449.0" layoutY="66.0" text="Rendelés leadása">
                <font>
                   <Font size="24.0" />
@@ -44,7 +44,10 @@
             <Label fx:id="emailErr" layoutX="241.0" layoutY="249.0" text="Email cím nem maradhat üresen!" textFill="#e40000" visible="false" />
             <Label fx:id="phoneErr" layoutX="222.0" layoutY="192.0" text="Telefonszám nem maradhat üresen!" textFill="#e40000" visible="false" />
             <Label fx:id="nameErr" layoutX="277.0" layoutY="137.0" text="Név nem maradhat üresen!" textFill="#e40000" visible="false" />
+            <Label fx:id="finalPricelabel" layoutX="487.0" layoutY="419.0" text="Végösszeg :" />
+            <Label layoutX="107.0" layoutY="448.0" text="Kuponkóddal ólcsóbb!" />
+            <Button layoutX="141.0" layoutY="510.0" onAction="#coupon" mnemonicParsing="false" text="Kód beküldése" />
          </children>
       </AnchorPane>
-   </center>
+   </bottom>
 </BorderPane>

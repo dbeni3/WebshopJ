@@ -120,14 +120,13 @@ public class ShopController implements Initializable {
     private  List<Button> buttons= new ArrayList<>();
     private  List<Button> deleteButtons= new ArrayList<>();
     private List<Product> products=new ArrayList<>();
-    private List<Product> basket=new ArrayList<>();
+    public static List<Product> basket=new ArrayList<>();
     private List<Product> track=new ArrayList<>();
     private int fromPage =0;
     private int fromBasket=0;
     @FXML
     private void switchToOrder() throws IOException {
-
-        App.setRoot("order");
+            App.setRoot("order");
     }
     @FXML
     private void addToCart(ActionEvent actionEvent) {

@@ -22,7 +22,7 @@ public class Product {
         this.imgSrc=src;
         this.id=id;
     }
-
+    public  int getId(){return  id;}
     public int getPrice() {
         return price;
     }
