@@ -1,4 +1,4 @@
-package hu.unideb.inf;
+package webshop;
 
 //import java.awt.*;
 

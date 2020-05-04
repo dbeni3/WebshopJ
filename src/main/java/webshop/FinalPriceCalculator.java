@@ -1,11 +1,11 @@
-package hu.unideb.inf;
+package webshop;
 
 
 import java.util.List;
 
 public class FinalPriceCalculator {
 
-    public static int calculateFinalPrice(List<Product> basket,String coupon){
+    public static int calculateFinalPrice(List<Product> basket, String coupon){
         int finalPrice=0;
         for (int i=0;i<basket.size();i++){
             finalPrice+= basket.get(i).getPrice();

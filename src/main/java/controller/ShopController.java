@@ -1,6 +1,8 @@
-package hu.unideb.inf;
+package controller;
 
-import hu.unideb.inf.db.Db;
+import webshop.Product;
+import db.Db;
+import main.App;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -157,7 +159,7 @@ public class ShopController implements Initializable {
             des.get(i).setText(products.get(i+from).getDescription());
         }
         for (int i=0;i<6 && i< products.size();i++){
-            Image image=new Image(getClass().getResourceAsStream(products.get(i+from).getImgSrc()));
+            Image image=new Image(getClass().getClassLoader().getResourceAsStream(products.get(i+from).getImgSrc()));
             imageViews.get(i).setImage(image);
         }
     }

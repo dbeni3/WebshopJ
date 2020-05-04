@@ -1,4 +1,4 @@
-package hu.unideb.inf;
+package main;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 
 
 public class App extends Application {
@@ -27,12 +28,14 @@ public class App extends Application {
        stage.show();
     }
 
-    static void setRoot(String fxml) throws IOException {
+    public static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }
 
     private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+       System.out.println(App.class.getClassLoader().getResource("xml/" + fxml + ".fxml"));
+        //URL url= new URL(App.class.getResource(fxml + ".fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getClassLoader().getResource("xml/" + fxml + ".fxml"));
         return fxmlLoader.load();
     }
 

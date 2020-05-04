@@ -1,16 +1,8 @@
-package hu.unideb.inf.db;
+package db;
 
-import com.google.gson.Gson;
-import hu.unideb.inf.Product;
-
-import java.io.File;
-import java.io.FileWriter;
-import java.io.Writer;
-import java.util.Arrays;
-import java.util.List;
 
 public class JsonWriter {
-    public static void fillJson(){
+  /*  public static void fillJson(){
         try {
             List<Product> products = Arrays.asList(
                     new Product(100,"motor1","Szepaghdfghlma","img/motor2.jpg"),
@@ -41,6 +33,6 @@ public class JsonWriter {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-    }
+    }*/
     }
 

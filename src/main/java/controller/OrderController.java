@@ -1,6 +1,9 @@
-package hu.unideb.inf;
+package controller;
 
-import hu.unideb.inf.db.Db;
+import webshop.FinalPriceCalculator;
+import webshop.Product;
+import db.Db;
+import main.App;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -34,8 +37,8 @@ public class OrderController implements Initializable {
     private int finalPrice;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        basket=ShopController.basket;
-        finalPrice=FinalPriceCalculator.calculateFinalPrice(basket,"");
+        basket= ShopController.basket;
+        finalPrice= FinalPriceCalculator.calculateFinalPrice(basket,"");
         finalPricelabel.setText("Végösszeg: " + finalPrice);
     }
     @FXML

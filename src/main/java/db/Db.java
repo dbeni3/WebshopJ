@@ -1,8 +1,7 @@
-package hu.unideb.inf.db;
+package db;
 
-import hu.unideb.inf.Product;
+import webshop.Product;
 
-import java.awt.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +28,6 @@ public class Db {
                 throwables.printStackTrace();
             }
         }
-
         try {
             metadata=conn.getMetaData();
         } catch (SQLException throwables) {
