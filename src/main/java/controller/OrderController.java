@@ -1,6 +1,13 @@
 package controller;
 
 import db.JPA;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import org.tinylog.Logger;
 import webshop.FinalPriceCalculator;
 import webshop.Orders;
 import webshop.Product;
@@ -52,17 +59,19 @@ public class OrderController implements Initializable {
             couponMess.setVisible(true);
             finalPricelabel.setText("Végösszeg: "  + priceWithCoupon);
             finalPrice=-1;
+            Logger.info("Coupon was used");
         }else{
             couponMess.setText("Hibás Kupon");
             couponMess.setVisible(true);
+            Logger.info("Coupon was wrong");
         }
     }
     @FXML
-    private void makeOrder() throws IOException {
+    private void makeOrder(ActionEvent actionEvent) throws IOException {
 
         Purchaser purchaser=new Purchaser(purchaserName.getText(),purchaserPhone.getText(),purchaserEmail.getText(),purchaserPostalCode.getText(),purchaserAddress.getText());
         JPA.createPurcasher(purchaser);
-
+        Logger.info("Purchaser was registered");
         List<Purchaser> p=JPA.getLastPurchaser();
         long purchaserId=p.get(p.size()-1).getID();
         List<Orders> orders=new ArrayList<Orders>();
@@ -72,9 +81,13 @@ public class OrderController implements Initializable {
         for (int i=0;i<orders.size();i++){
             JPA.createOrders(orders.get(i));
         }
-
+        Logger.info("Orders was registered");
         ShopController.basket.clear();
-        App.setRoot("shop");
+        Parent root = FXMLLoader.load(getClass().getResource("/xml/shop.fxml"));
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
+        Logger.info("Loading shop scene");
     }
 
 }

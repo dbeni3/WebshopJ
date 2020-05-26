@@ -2,6 +2,12 @@ package controller;
 
 import db.Db;
 import db.JPA;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import org.tinylog.Logger;
 import webshop.Product;
 import main.App;
 import javafx.event.ActionEvent;
@@ -128,8 +134,12 @@ public class ShopController implements Initializable {
     private int fromPage =0;
     private int fromBasket=0;
     @FXML
-    private void switchToOrder() throws IOException {
-            App.setRoot("order");
+    private void switchToOrder(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/xml/order.fxml"));
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
+        Logger.info("Loading order scene");
     }
     @FXML
     private void addToCart(ActionEvent actionEvent) {
@@ -138,6 +148,7 @@ public class ShopController implements Initializable {
                basket.add(track.get(i));
             }
         }
+        Logger.info("Product was added to cart");
     }
     private void setTextOnShop(int from){
         if (products.size()-6<from){
@@ -238,11 +249,13 @@ public class ShopController implements Initializable {
         setTextOnBasket(fromBasket);
         shopPane.setDisable(true);
         basketPane.setVisible(true);
+        Logger.info("Basket is visible");
     }
     @FXML
     private void toShopPane() {
         shopPane.setDisable(false);
         basketPane.setVisible(false);
+        Logger.info("Shop pane is visible");
     }
     private void setButtonDisable(Button button){
         DropShadow shadow = new DropShadow();
@@ -264,6 +277,7 @@ public class ShopController implements Initializable {
                 setTextOnBasket(0);
             }
         }
+        Logger.info("Product was removed from cart");
     }
     @FXML
     private void backOnBasketButton(ActionEvent actionEvent){
@@ -320,20 +334,8 @@ public class ShopController implements Initializable {
         deleteButtons.add(delete1);
         deleteButtons.add(delete2);
         deleteButtons.add(delete3);
-        /*Jdbi jdbi = Jdbi.create("jdbc:mysql://remotemysql.com:3306/5nMIC67K91","5nMIC67K91","JeEwfrh2X8");
-        jdbi.installPlugin(new SqlObjectPlugin());
-
-        try (Handle handle = jdbi.open()) {
-            ProductDao dao = handle.attach(Product.class);
-            //dao.createTable();
-            products=dao.listProducts();
-
-        }*/
-
         products=JPA.getProducts();
-
-        //Db db =new Db();
-        //products=db.getProducts();
+        Logger.info("Reading Products");
         for (int i=0;i<6 && i<products.size();i++){
             track.add(products.get(i));
         }
