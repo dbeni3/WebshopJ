@@ -1,7 +1,8 @@
 package controller;
 
-import webshop.Product;
 import db.Db;
+import db.JPA;
+import webshop.Product;
 import main.App;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -135,7 +136,6 @@ public class ShopController implements Initializable {
         for (int i=0;i<buttons.size();i++){
             if(actionEvent.getSource()==buttons.get(i)){
                basket.add(track.get(i));
-
             }
         }
     }
@@ -193,7 +193,6 @@ public class ShopController implements Initializable {
                 setButtonDisable(deleteButtons.get(i));
             }
         }
-
         for (int i=0;i<to && i<3;i++){
             basketPrices.get(i).setText("" + basket.get(i+from).getPrice());
         }
@@ -321,8 +320,20 @@ public class ShopController implements Initializable {
         deleteButtons.add(delete1);
         deleteButtons.add(delete2);
         deleteButtons.add(delete3);
-        Db db =new Db();
-        products=db.getProducts();
+        /*Jdbi jdbi = Jdbi.create("jdbc:mysql://remotemysql.com:3306/5nMIC67K91","5nMIC67K91","JeEwfrh2X8");
+        jdbi.installPlugin(new SqlObjectPlugin());
+
+        try (Handle handle = jdbi.open()) {
+            ProductDao dao = handle.attach(Product.class);
+            //dao.createTable();
+            products=dao.listProducts();
+
+        }*/
+
+        products=JPA.getProducts();
+
+        //Db db =new Db();
+        //products=db.getProducts();
         for (int i=0;i<6 && i<products.size();i++){
             track.add(products.get(i));
         }

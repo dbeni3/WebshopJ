@@ -18,11 +18,6 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("shop"));
         stage.setScene(scene);
-
-       //stage.initStyle(StageStyle.UNDECORATED);
-       //Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        //double width = screenSize.getWidth() / 2.5;
-      // double height = screenSize.getHeight() / 2;
        stage.setWidth(1280);
        stage.setHeight(720);
        stage.show();
@@ -34,7 +29,6 @@ public class App extends Application {
 
     private static Parent loadFXML(String fxml) throws IOException {
        System.out.println(App.class.getClassLoader().getResource("xml/" + fxml + ".fxml"));
-        //URL url= new URL(App.class.getResource(fxml + ".fxml"));
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getClassLoader().getResource("xml/" + fxml + ".fxml"));
         return fxmlLoader.load();
     }

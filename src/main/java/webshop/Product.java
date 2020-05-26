@@ -1,14 +1,22 @@
 package webshop;
 
-//import java.awt.*;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Product {
-    int  id;
+    @Id
+    @GeneratedValue
+    long id;
     public int price;
     public String productName;
     public String description;
     public String imgSrc;
 
+    public Product(){
+    }
     public Product(int price,String productName,String description,String src){
         this.price=price;
         this.productName=productName;
@@ -22,7 +30,14 @@ public class Product {
         this.imgSrc=src;
         this.id=id;
     }
-    public  int getId(){return  id;}
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public int getPrice() {
         return price;
     }

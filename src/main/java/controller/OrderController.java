@@ -1,19 +1,22 @@
 package controller;
 
+import db.JPA;
 import webshop.FinalPriceCalculator;
+import webshop.Orders;
 import webshop.Product;
-import db.Db;
 import main.App;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import webshop.Purchaser;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.concurrent.ForkJoinPool;
 
 public class OrderController implements Initializable {
     @FXML
@@ -57,12 +60,19 @@ public class OrderController implements Initializable {
     @FXML
     private void makeOrder() throws IOException {
 
-        Db db =new Db();
-        db.addPurchaser(purchaserName.getText(),purchaserPhone.getText(),purchaserEmail.getText(),purchaserPostalCode.getText(),purchaserAddress.getText());
-        int purchaserID=db.getPurchaser();
+        Purchaser purchaser=new Purchaser(purchaserName.getText(),purchaserPhone.getText(),purchaserEmail.getText(),purchaserPostalCode.getText(),purchaserAddress.getText());
+        JPA.createPurcasher(purchaser);
+
+        List<Purchaser> p=JPA.getLastPurchaser();
+        long purchaserId=p.get(p.size()-1).getID();
+        List<Orders> orders=new ArrayList<Orders>();
         for (int i=0;i<basket.size();i++){
-            db.addOrder(purchaserID,basket.get(i).getId());
+            orders.add(new Orders(basket.get(i).getId(),purchaserId));
         }
+        for (int i=0;i<orders.size();i++){
+            JPA.createOrders(orders.get(i));
+        }
+
         ShopController.basket.clear();
         App.setRoot("shop");
     }
