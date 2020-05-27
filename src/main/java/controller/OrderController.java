@@ -25,22 +25,22 @@ import java.util.ResourceBundle;
 
 public class OrderController implements Initializable {
     @FXML
-    TextField purchaserName;
+    private TextField purchaserName;
     @FXML
-    TextField purchaserPostalCode;
+    private TextField purchaserPostalCode;
     @FXML
-    TextField purchaserAddress;
+    private TextField purchaserAddress;
     @FXML
-    TextField purchaserPhone;
+    private TextField purchaserPhone;
     @FXML
-    TextField purchaserEmail;
+    private TextField purchaserEmail;
     @FXML
-    TextField couponText;
+    private TextField couponText;
 
     @FXML
-    Label finalPricelabel;
+    private Label finalPricelabel;
     @FXML
-    Label couponMess;
+    private Label couponMess;
     private List<Product> basket = new ArrayList<Product>();
     private int finalPrice;
 

@@ -47,6 +47,7 @@ public class JPA {
     /**
      * Inserts a row into the Purchaser table in the database
      * A row represents one purchaser
+     * @param purchaser is contains the data.
      */
     public static void createPurcasher(Purchaser purchaser) {
         EntityManager em = emf.createEntityManager();
@@ -62,6 +63,7 @@ public class JPA {
     /**
      * Inserts a row into the Orders table in the database
      * A row represents one order
+     * @param orders is contains the data.
      */
     public static void createOrders(Orders orders) {
         EntityManager em = emf.createEntityManager();

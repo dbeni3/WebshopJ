@@ -10,6 +10,9 @@ import javax.persistence.Id;
  */
 @Entity
 public class Purchaser {
+    /**
+     * The ID of the purchaser.
+     */
     @Id
     @GeneratedValue
     long ID;

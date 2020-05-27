@@ -10,25 +10,28 @@ import javax.persistence.Id;
  */
 @Entity
 public class Product {
+    /**
+     * The ID of the product.
+     */
     @Id
     @GeneratedValue
-    long id;
+    private long id;
     /**
      * The Price of the product.
      */
-    public int price;
+    private  int price;
     /**
      * The name of the product.
      */
-    public String productName;
+    private  String productName;
     /**
      * The description of the product.
      */
-    public String description;
+    private String description;
     /**
      * The image source of the product.
      */
-    public String imgSrc;
+    private  String imgSrc;
 
     public Product() {
     }

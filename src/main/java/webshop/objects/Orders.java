@@ -9,18 +9,20 @@ import javax.persistence.Id;
  */
 @Entity
 public class Orders {
-
+    /**
+     * The ID of the order.
+     */
     @Id
     @GeneratedValue
-    long ID;
+    private long ID;
     /**
      * The ID of the product.
      */
-    long productnumb;
+    private long productnumb;
     /**
      * The ID of the product.
      */
-    long purchasernumb;
+    private long purchasernumb;
 
     public Orders() {
     }
