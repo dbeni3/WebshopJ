@@ -1,32 +1,44 @@
-package webshop;
+package webshop.objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+/**
+ * Class representing one order.
+ */
 @Entity
 public class Orders {
+
     @Id
     @GeneratedValue
     long ID;
+    /**
+     * The ID of the product.
+     */
     long productnumb;
+    /**
+     * The ID of the product.
+     */
     long purchasernumb;
-    public Orders(){
 
+    public Orders() {
     }
-    public Orders(long purchasernumb){
+
+    public Orders(long purchasernumb) {
         this.purchasernumb = purchasernumb;
     }
-    public Orders(long productnumb, long purchasernumb){
+
+    public Orders(long productnumb, long purchasernumb) {
         this.productnumb = productnumb;
         this.purchasernumb = purchasernumb;
     }
-    public Orders(long ID, long productnumb, long purchasernumb){
+
+    public Orders(long ID, long productnumb, long purchasernumb) {
         this.productnumb = productnumb;
         this.purchasernumb = purchasernumb;
-        this.ID=ID;
+        this.ID = ID;
     }
-
 
     public long getID() {
         return ID;

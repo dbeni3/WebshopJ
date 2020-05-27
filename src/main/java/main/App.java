@@ -15,8 +15,7 @@ public class App extends Application {
     private static Scene scene;
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
-        System.out.println(getClass().getResource("/xml/shop.fxml"));
+    public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/xml/shop.fxml"));
         primaryStage.setTitle("Webshop");
         primaryStage.setResizable(false);

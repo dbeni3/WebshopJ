@@ -1,18 +1,26 @@
 package db;
 
-import webshop.Orders;
-import webshop.Product;
-import webshop.Purchaser;
+import webshop.objects.Orders;
+import webshop.objects.Product;
+import webshop.objects.Purchaser;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.util.List;
 
+/**
+ * JPA class allows to work with JPA.
+ */
 public class JPA {
 
     private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa-example");
 
+    /**
+     * Return the list of {@code Products}, from the Database.
+     *
+     * @return the list of {@code Products}, from the Database.
+     */
     public static List<Product> getProducts() {
         EntityManager em = emf.createEntityManager();
         try {
@@ -21,7 +29,13 @@ public class JPA {
             em.close();
         }
     }
-    public static List<Purchaser> getLastPurchaser() {
+
+    /**
+     * Return the list of {@code Purchaser}, from the Database.
+     *
+     * @return the list of {@code Purchaser}, from the Database.
+     */
+    public static List<Purchaser> getPurchaser() {
         EntityManager em = emf.createEntityManager();
         try {
             return em.createQuery("SELECT l FROM Purchaser l ", Purchaser.class).getResultList();
@@ -30,6 +44,10 @@ public class JPA {
         }
     }
 
+    /**
+     * Inserts a row into the Purchaser table in the database
+     * A row represents one purchaser
+     */
     public static void createPurcasher(Purchaser purchaser) {
         EntityManager em = emf.createEntityManager();
         try {
@@ -40,6 +58,11 @@ public class JPA {
             em.close();
         }
     }
+
+    /**
+     * Inserts a row into the Orders table in the database
+     * A row represents one order
+     */
     public static void createOrders(Orders orders) {
         EntityManager em = emf.createEntityManager();
 

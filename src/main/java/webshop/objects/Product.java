@@ -1,35 +1,53 @@
-package webshop;
+package webshop.objects;
 
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+/**
+ * Class representing one product.
+ */
 @Entity
 public class Product {
     @Id
     @GeneratedValue
     long id;
+    /**
+     * The Price of the product.
+     */
     public int price;
+    /**
+     * The name of the product.
+     */
     public String productName;
+    /**
+     * The description of the product.
+     */
     public String description;
+    /**
+     * The image source of the product.
+     */
     public String imgSrc;
 
-    public Product(){
+    public Product() {
     }
-    public Product(int price,String productName,String description,String src){
-        this.price=price;
-        this.productName=productName;
-        this.description=description;
-        this.imgSrc=src;
+
+    public Product(int price, String productName, String description, String src) {
+        this.price = price;
+        this.productName = productName;
+        this.description = description;
+        this.imgSrc = src;
     }
-    public Product(int id,int price,String productName,String description,String src){
-        this.price=price;
-        this.productName=productName;
-        this.description=description;
-        this.imgSrc=src;
-        this.id=id;
+
+    public Product(int id, int price, String productName, String description, String src) {
+        this.price = price;
+        this.productName = productName;
+        this.description = description;
+        this.imgSrc = src;
+        this.id = id;
     }
+
     public long getId() {
         return id;
     }

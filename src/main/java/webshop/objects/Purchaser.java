@@ -1,35 +1,54 @@
-package webshop;
+package webshop.objects;
 
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+/**
+ * Class representing one purchaser.
+ */
 @Entity
 public class Purchaser {
     @Id
     @GeneratedValue
     long ID;
-
+    /**
+     * The name of the purchaser.
+     */
     private String name;
-
+    /**
+     * The phone number of the purchaser.
+     */
     private String phoneNumb;
-
+    /**
+     * The email address of the purchaser.
+     */
     private String email;
-
+    /**
+     * The postal code of the purchaser.
+     */
     private String postalCode;
-
+    /**
+     * The address of the purchaser.
+     */
     private String address;
-    public Purchaser(){
+    /**
+     * The discount of the purchaser.
+     */
+    private String discount;
 
+
+    public Purchaser() {
     }
 
-    public Purchaser(String name,String phoneNumb,String email,String postalCode,String address){
-        this.name=name;
-        this.address=address;
-        this.phoneNumb=phoneNumb;
-        this.email=email;
-        this.postalCode=postalCode;
+    public Purchaser(String name, String phoneNumb, String email, String postalCode, String address, String discount) {
+        this.name = name;
+        this.address = address;
+        this.phoneNumb = phoneNumb;
+        this.email = email;
+        this.postalCode = postalCode;
+        this.discount = discount;
     }
 
     public long getID() {
@@ -78,5 +97,13 @@ public class Purchaser {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(String discount) {
+        this.discount = discount;
     }
 }

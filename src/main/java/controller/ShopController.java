@@ -7,7 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.tinylog.Logger;
-import webshop.Product;
+import webshop.objects.Product;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -44,7 +44,7 @@ public class ShopController implements Initializable {
     private Label productDes5;
     @FXML
     private Label productDes6;
-    private  List<Label> des= new ArrayList<>();
+    private List<Label> des = new ArrayList<>();
     @FXML
     private Label productName1;
     @FXML
@@ -57,21 +57,21 @@ public class ShopController implements Initializable {
     private Label productName5;
     @FXML
     private Label productName6;
-    private  List<Label> names= new ArrayList<>();
+    private List<Label> names = new ArrayList<>();
     @FXML
     private Label basketProdName1;
     @FXML
     private Label basketProdName2;
     @FXML
     private Label basketProdName3;
-    private  List<Label> basketName= new ArrayList<>();
+    private List<Label> basketName = new ArrayList<>();
     @FXML
     private Label basketProdPrice1;
     @FXML
     private Label basketProdPrice2;
     @FXML
     private Label basketProdPrice3;
-    private  List<Label> basketPrices= new ArrayList<>();
+    private List<Label> basketPrices = new ArrayList<>();
     @FXML
     private Label price1;
     @FXML
@@ -84,7 +84,7 @@ public class ShopController implements Initializable {
     private Label price5;
     @FXML
     private Label price6;
-    private  List<Label> prices= new ArrayList<>();
+    private List<Label> prices = new ArrayList<>();
     @FXML
     private ImageView productImg1;
     @FXML
@@ -123,14 +123,15 @@ public class ShopController implements Initializable {
     private Button nextButtonOnBasket;
     @FXML
     private Button backButtonOnBasket;
-    private  List<ImageView> imageViews= new ArrayList<>();
-    private  List<Button> buttons= new ArrayList<>();
-    private  List<Button> deleteButtons= new ArrayList<>();
-    private List<Product> products=new ArrayList<>();
-    public static List<Product> basket=new ArrayList<>();
-    private List<Product> track=new ArrayList<>();
-    private int fromPage =0;
-    private int fromBasket=0;
+    private List<ImageView> imageViews = new ArrayList<>();
+    private List<Button> buttons = new ArrayList<>();
+    private List<Button> deleteButtons = new ArrayList<>();
+    private List<Product> products = new ArrayList<>();
+    public static List<Product> basket = new ArrayList<>();
+    private List<Product> track = new ArrayList<>();
+    private int fromPage = 0;
+    private int fromBasket = 0;
+
     @FXML
     private void switchToOrder(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/xml/order.fxml"));
@@ -139,109 +140,114 @@ public class ShopController implements Initializable {
         stage.show();
         Logger.info("Loading order scene");
     }
+
     @FXML
     private void addToCart(ActionEvent actionEvent) {
-        for (int i=0;i<buttons.size();i++){
-            if(actionEvent.getSource()==buttons.get(i)){
-               basket.add(track.get(i));
+        for (int i = 0; i < buttons.size(); i++) {
+            if (actionEvent.getSource() == buttons.get(i)) {
+                basket.add(track.get(i));
             }
         }
         Logger.info("Product was added to cart");
     }
-    private void setTextOnShop(int from){
-        if (products.size()-6<from){
-            from=products.size()-6;
+
+    private void setTextOnShop(int from) {
+        if (products.size() - 6 < from) {
+            from = products.size() - 6;
             setButtonDisable(nextButtonOnPage);
-        }else if (from==0){
+        } else if (from == 0) {
             setButtonDisable(backButtonOnPage);
         }
-        for (int i=0;i<6 && i< products.size();i++){
-            track.set(i,products.get(i+from));
+        for (int i = 0; i < 6 && i < products.size(); i++) {
+            track.set(i, products.get(i + from));
         }
-        for (int i=0;i<6 && i< products.size();i++){
-            prices.get(i).setText("" + products.get(i+from).getPrice());
+        for (int i = 0; i < 6 && i < products.size(); i++) {
+            prices.get(i).setText("" + products.get(i + from).getPrice());
         }
-        for (int i=0;i<6 && i< products.size();i++){
-            names.get(i).setText(products.get(i+from).getProductName());
+        for (int i = 0; i < 6 && i < products.size(); i++) {
+            names.get(i).setText(products.get(i + from).getProductName());
         }
-        for (int i=0;i<6 && i< products.size();i++){
-            des.get(i).setText(products.get(i+from).getDescription());
+        for (int i = 0; i < 6 && i < products.size(); i++) {
+            des.get(i).setText(products.get(i + from).getDescription());
         }
-        for (int i=0;i<6 && i< products.size();i++){
-            Image image=new Image(getClass().getClassLoader().getResourceAsStream(products.get(i+from).getImgSrc()));
+        for (int i = 0; i < 6 && i < products.size(); i++) {
+            Image image = new Image(getClass().getClassLoader().getResourceAsStream(products.get(i + from).getImgSrc()));
             imageViews.get(i).setImage(image);
         }
     }
-    private void setTextOnBasket(int from){
-        int to=3;
 
-        if (from<0){
-            fromBasket=0;
+    private void setTextOnBasket(int from) {
+        int to = 3;
+        if (from < 0) {
+            fromBasket = 0;
             return;
         }
-        if (from<=3 && basket.size()<3){
+        if (from <= 3 && basket.size() < 3) {
             setButtonDisable(nextButtonOnBasket);
             setButtonDisable(backButtonOnBasket);
         }
-        if (basket.size()>3){
+        if (basket.size() > 3) {
             setButtonEnable(nextButtonOnBasket);
         }
-        if (from>basket.size()){
+        if (from > basket.size()) {
             setButtonDisable(nextButtonOnBasket);
-            fromBasket=basket.size();
+            fromBasket = basket.size();
             return;
         }
-        if (from>basket.size()-3){
-           to= abs(from-basket.size());
+        if (from > basket.size() - 3) {
+            to = abs(from - basket.size());
         }
-        for (int i=0; i<3;i++){
+        for (int i = 0; i < 3; i++) {
             setButtonEnable(deleteButtons.get(i));
         }
-        if (to<3){
-            for (int i=to;i<3;i++){
+        if (to < 3) {
+            for (int i = to; i < 3; i++) {
                 setButtonDisable(deleteButtons.get(i));
             }
         }
-        for (int i=0;i<to && i<3;i++){
-            basketPrices.get(i).setText("" + basket.get(i+from).getPrice());
+        for (int i = 0; i < to && i < 3; i++) {
+            basketPrices.get(i).setText("" + basket.get(i + from).getPrice());
         }
-        if (to<3){
-            for (int i=to;i<3;i++){
+        if (to < 3) {
+            for (int i = to; i < 3; i++) {
                 basketPrices.get(i).setText("xxx");
             }
         }
-        for (int i=0;i<to && i<3;i++){
-            basketName.get(i).setText(basket.get(i+from).getProductName());
+        for (int i = 0; i < to && i < 3; i++) {
+            basketName.get(i).setText(basket.get(i + from).getProductName());
         }
-        if (to<3){
-            for (int i=to;i<3;i++){
+        if (to < 3) {
+            for (int i = to; i < 3; i++) {
                 basketName.get(i).setText("xxx");
             }
         }
     }
+
     @FXML
-    private void nextPage(){
-        if (products.size()-6< fromPage){
-            fromPage =products.size()-6;
-        }else {
-            fromPage = fromPage +6;
-           setButtonEnable(backButtonOnPage);
+    private void nextPage() {
+        if (products.size() - 6 < fromPage) {
+            fromPage = products.size() - 6;
+        } else {
+            fromPage = fromPage + 6;
+            setButtonEnable(backButtonOnPage);
         }
         setTextOnShop(fromPage);
     }
+
     @FXML
-    private void backPage(){
-        if (fromPage -6<0){
-            fromPage =0;
-        }else {
-            fromPage = fromPage -6;
-           setButtonEnable(nextButtonOnPage);
+    private void backPage() {
+        if (fromPage - 6 < 0) {
+            fromPage = 0;
+        } else {
+            fromPage = fromPage - 6;
+            setButtonEnable(nextButtonOnPage);
         }
         setTextOnShop(fromPage);
     }
+
     @FXML
     private void toBasketPane() {
-        if (basket.size()>3){
+        if (basket.size() > 3) {
             setButtonEnable(nextButtonOnBasket);
         }
         setTextOnBasket(fromBasket);
@@ -249,46 +255,53 @@ public class ShopController implements Initializable {
         basketPane.setVisible(true);
         Logger.info("Basket is visible");
     }
+
     @FXML
     private void toShopPane() {
         shopPane.setDisable(false);
         basketPane.setVisible(false);
         Logger.info("Shop pane is visible");
     }
-    private void setButtonDisable(Button button){
+
+    private void setButtonDisable(Button button) {
         DropShadow shadow = new DropShadow();
         button.setEffect(shadow);
         button.setDisable(true);
     }
-    private void setButtonEnable(Button button){
+
+    private void setButtonEnable(Button button) {
         button.setEffect(null);
         button.setDisable(false);
     }
+
     @FXML
-    private void deleteButton(ActionEvent actionEvent){
-        for (int i=0;i<deleteButtons.size();i++){
-            if(actionEvent.getSource()==deleteButtons.get(i)){
-                if (basket.size()!=0){
+    private void deleteButton(ActionEvent actionEvent) {
+        for (int i = 0; i < deleteButtons.size(); i++) {
+            if (actionEvent.getSource() == deleteButtons.get(i)) {
+                if (basket.size() != 0) {
                     basket.remove(i);
                 }
-                fromBasket=0;
+                fromBasket = 0;
                 setTextOnBasket(0);
             }
         }
         Logger.info("Product was removed from cart");
     }
+
     @FXML
-    private void backOnBasketButton(ActionEvent actionEvent){
-        fromBasket-=3;
+    private void backOnBasketButton(ActionEvent actionEvent) {
+        fromBasket -= 3;
         setTextOnBasket(fromBasket);
         setButtonEnable(nextButtonOnBasket);
     }
+
     @FXML
-    private void nextOnBasketButton(ActionEvent actionEvent){
-        fromBasket+=3;
+    private void nextOnBasketButton(ActionEvent actionEvent) {
+        fromBasket += 3;
         setButtonEnable(backButtonOnBasket);
         setTextOnBasket(fromBasket);
     }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         basketPane.setVisible(false);
@@ -332,9 +345,9 @@ public class ShopController implements Initializable {
         deleteButtons.add(delete1);
         deleteButtons.add(delete2);
         deleteButtons.add(delete3);
-        products=JPA.getProducts();
+        products = JPA.getProducts();
         Logger.info("Reading Products");
-        for (int i=0;i<6 && i<products.size();i++){
+        for (int i = 0; i < 6 && i < products.size(); i++) {
             track.add(products.get(i));
         }
         setTextOnShop(fromPage);

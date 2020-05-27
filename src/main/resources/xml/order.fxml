@@ -2,15 +2,12 @@
 
 <!--<Button fx:id="secondaryButton" onAction="#switchToPrimary" text="Switch to Primary View" BorderPane.alignment="CENTER"/>-->
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OrderController">
+<BorderPane prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OrderController">
     <top>
         <AnchorPane maxWidth="1280.0" prefHeight="40.0" prefWidth="1280.0" style="-fx-background-color: #7FB3D5;" BorderPane.alignment="CENTER">
             <children>
@@ -39,14 +36,9 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <Label fx:id="adressErr" layoutX="257.0" layoutY="358.0" text="Lakcím nem maradhat üresen!" textFill="#e40000" visible="false" />
-            <Label fx:id="postalcodeErr" layoutX="223.0" layoutY="308.0" text="Irányítószám nem maradhat üresen!" textFill="#e40000" visible="false" />
-            <Label fx:id="emailErr" layoutX="241.0" layoutY="249.0" text="Email cím nem maradhat üresen!" textFill="#e40000" visible="false" />
-            <Label fx:id="phoneErr" layoutX="222.0" layoutY="192.0" text="Telefonszám nem maradhat üresen!" textFill="#e40000" visible="false" />
-            <Label fx:id="nameErr" layoutX="277.0" layoutY="137.0" text="Név nem maradhat üresen!" textFill="#e40000" visible="false" />
             <Label fx:id="finalPricelabel" layoutX="487.0" layoutY="419.0" text="Végösszeg :" />
             <Label layoutX="107.0" layoutY="448.0" text="Kuponkóddal ólcsóbb!" />
-            <Button layoutX="141.0" layoutY="510.0" onAction="#coupon" mnemonicParsing="false" text="Kód beküldése" />
+            <Button layoutX="120.0" layoutY="540.0" mnemonicParsing="false" onAction="#coupon" text="Kód beküldése" />
          </children>
       </AnchorPane>
    </bottom>
