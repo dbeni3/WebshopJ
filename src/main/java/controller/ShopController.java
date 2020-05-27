@@ -1,6 +1,5 @@
 package controller;
 
-import db.Db;
 import db.JPA;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -9,7 +8,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.tinylog.Logger;
 import webshop.Product;
-import main.App;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
