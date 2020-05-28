@@ -14,7 +14,7 @@ public class Orders {
      */
     @Id
     @GeneratedValue
-    private long ID;
+    private long id;
     /**
      * The ID of the product.
      */
@@ -36,18 +36,18 @@ public class Orders {
         this.purchasernumb = purchasernumb;
     }
 
-    public Orders(long ID, long productnumb, long purchasernumb) {
+    public Orders(long id, long productnumb, long purchasernumb) {
         this.productnumb = productnumb;
         this.purchasernumb = purchasernumb;
-        this.ID = ID;
+        this.id = id;
     }
 
-    public long getID() {
-        return ID;
+    public long getId() {
+        return id;
     }
 
-    public void setID(long ID) {
-        this.ID = ID;
+    public void setId(long ID) {
+        this.id = ID;
     }
 
     public long getProductnumb() {

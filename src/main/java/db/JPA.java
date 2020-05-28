@@ -11,6 +11,7 @@ import java.util.List;
 
 /**
  * JPA class allows to work with JPA.
+ *
  */
 public class JPA {
 
@@ -45,8 +46,8 @@ public class JPA {
     }
 
     /**
-     * Inserts a row into the Purchaser table in the database
-     * A row represents one purchaser
+     * Inserts a row into the Purchaser table in the database,row represents one purchaser.
+     *
      * @param purchaser is contains the data.
      */
     public static void createPurcasher(Purchaser purchaser) {
@@ -61,8 +62,8 @@ public class JPA {
     }
 
     /**
-     * Inserts a row into the Orders table in the database
-     * A row represents one order
+     * Inserts a row into the Orders table in the database,a row represents one order.
+     *
      * @param orders is contains the data.
      */
     public static void createOrders(Orders orders) {
@@ -76,6 +77,4 @@ public class JPA {
             em.close();
         }
     }
-
-
 }

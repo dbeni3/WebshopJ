@@ -74,7 +74,7 @@ public class OrderController implements Initializable {
         JPA.createPurcasher(purchaser);
         Logger.info("Purchaser was registered");
         List<Purchaser> p = JPA.getPurchaser();
-        long purchaserId = p.get(p.size() - 1).getID();
+        long purchaserId = p.get(p.size() - 1).getId();
         List<Orders> orders = new ArrayList<Orders>();
         for (int i = 0; i < basket.size(); i++) {
             orders.add(new Orders(basket.get(i).getId(), purchaserId));
@@ -90,5 +90,4 @@ public class OrderController implements Initializable {
         stage.show();
         Logger.info("Loading shop scene");
     }
-
 }

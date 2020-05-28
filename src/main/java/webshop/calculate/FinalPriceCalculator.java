@@ -41,7 +41,7 @@ public class FinalPriceCalculator {
      * Return the {@code sumPrice}, the sum of the prices of the products.
      *
      * @param basket is the list of products.
-     * @return the {@code sumPrice}, the sum of the prices of the products
+     * @return the {@code sumPrice}, the sum of the prices of the products.
      */
     public static int sumPrice(List<Product> basket) {
         int sumPrice = 0;
@@ -52,7 +52,7 @@ public class FinalPriceCalculator {
     }
 
     /**
-     * Check the price is valid .
+     * Check the price is valid.
      *
      * @param price is the list of products.
      * @return boolean, depending on the price

@@ -15,7 +15,7 @@ public class Purchaser {
      */
     @Id
     @GeneratedValue
-    long ID;
+    private long id;
     /**
      * The name of the purchaser.
      */
@@ -54,12 +54,12 @@ public class Purchaser {
         this.discount = discount;
     }
 
-    public long getID() {
-        return ID;
+    public long getId() {
+        return id;
     }
 
-    public void setID(long ID) {
-        this.ID = ID;
+    public void setId(long ID) {
+        this.id = ID;
     }
 
     public String getName() {
